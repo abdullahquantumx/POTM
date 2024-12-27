@@ -19,8 +19,29 @@ import {
   SiTailwindcss
 } from 'react-icons/si';
 import { TbBrain } from 'react-icons/tb';
+import { motion } from 'framer-motion';
 
 const TechStack = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
   const technologies = [
     { 
       name: 'Python', 
@@ -95,22 +116,38 @@ const TechStack = () => {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 py-4">
+        <motion.div 
+          className="text-center mb-12 py-4"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 inline-block">
             Tech Stack
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-blue-400 to-purple-600 mx-auto mt-4 rounded-full"></div>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-          {technologies.map((tech) => (
-            <div
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {technologies.map((tech, index) => (
+            <motion.div
               key={tech.name}
+              variants={itemVariants}
               className="group relative p-4 bg-white/5 backdrop-blur-sm rounded-xl 
                        hover:bg-white/10 transition-all duration-300 
                        border border-white/10 hover:border-white/20
                        flex flex-col items-center justify-center
                        hover:transform hover:-translate-y-1 hover:shadow-xl
                        cursor-pointer overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {/* Glow effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 
@@ -132,14 +169,13 @@ const TechStack = () => {
               <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform 
                             -skew-x-12 bg-gradient-to-r from-transparent to-white/10 opacity-0 
                             group-hover:animate-shine" />
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
 };
-
 
 
 export default TechStack;
