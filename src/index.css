@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Shine Animation */
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+.animate-shine {
+  animation: shine 1s ease-in-out;
+}
+
+/* Advanced Gradient */
+.advanced-gradient {
+  background: 
+    radial-gradient(circle at 0% 0%,
+      #071031 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 100% 0%,
+      #102767 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 100% 100%,
+      #020617 0%,
+      transparent 50%
+    ),
+    radial-gradient(circle at 0% 100%,
+      #000000 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg,
+      #172b6a 0%,
+      #020617 100%
+    );
+  position: relative;
+}
+
+/* Gradient Animation */
+.advanced-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 50%
+  );
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

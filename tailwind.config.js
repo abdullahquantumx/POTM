@@ -1,15 +1,20 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        shine: 'shine 1s ease-in-out'
+      },
+      keyframes: {
+        shine: {
+          '0%': { left: '-100%' },
+          '100%': { left: '100%' }
+        }
+      }
+    }
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
-  
+  plugins: [],
 }
