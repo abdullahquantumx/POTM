@@ -110,7 +110,7 @@ const Home = () => {
                
               </a>
               <a
-                href="/path-to-your-cv.pdf"
+                href="https://drive.google.com/file/d/1A9KIlJ-13GkReWRP5fIaiDHrIwKa89BS/view?usp=drive_link"
                 download
                 className="group relative p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 
                          hover:bg-white/10 hover:scale-110 transition-all duration-300"
@@ -126,15 +126,16 @@ const Home = () => {
             variants={itemVariants}
           >
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full 
-                            blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="relative w-64 h-64 md:w-80 md:h-80">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-300  to-blue-400 
+                 rounded-full blur-lg opacity-50 group-hover:opacity-100 
+                 transition-opacity duration-300"></div>
+              <div className="w-80 h-80 md:w-96 md:h-96">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full 
                               opacity-20 animate-pulse"></div>
                 <img
-                  src=""
+                  src="./dc.jpeg"
                   alt="Profile"
-                  className="absolute inset-4 rounded-full object-cover shadow-2xl 
+                  className="absolute inset-0 w-full h-full object-cover rounded-full shadow-2xl 
                            transition-transform duration-300 group-hover:scale-105"
                 />
               </div>

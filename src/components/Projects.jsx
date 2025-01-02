@@ -7,26 +7,26 @@ const Projects = () => {
     {
       id: 1,
       title: 'Logiance',
-      description: 'Description of project 1',
-      image: '/project1.jpg',
-      tech: ['React', 'Tailwind', 'Node.js'],
+      description: 'Logiance is a modern logistics platform that streamlines shipping and delivery for e-commerce businesses. With seamless integration to leading 3PL(Third-Party Logistics) providers like FedEx and Bluedart, it offers features such as intelligent courier recommendations, real-time order tracking, and efficient payment processing. Powered by a microservices architecture and a unified GraphQL gateway, Logiance enables businesses to optimize logistics operations, reduce costs, and enhance customer satisfaction—all on a flexible pay-as-you-go model.',
+      image: '/p1.png',
+      tech: ['Go', 'GraphQL', 'Apollo GraphQL', 'grpc','Next Js'],
       link: '#',
-      github: '#'
+      github: 'https://github.com/abdullahquantumx/logiance'
     },
     {
       id: 2,
       title: 'RoomSync',
-      description: 'RoomSync is a cutting-edge platform that integrates multiple machine learning models. It revolutionizes room management and enhances user experiences through advanced technologies.',
-      image: './LOC.webp',
+      description: 'RoomSync is an innovative platform that leverages advanced machine learning models to enhance room management and user experiences. It uses React.js to gather user input and connect with the server, while PostgreSQL stores data and client-uploaded images. A Flask API processes the results, and YOLO V5, PIA, CNN, and TensorFlow Sequential models are used for object identification, damage detection, image comparison, and analysis.',
+      image: './roomsync.png',
       tech: ['React', 'YOLO V5', 'TensorFlow', 'Postgre SQL', 'Python Image Processing', 'Flask'],
-      link: '#',
+      link: 'https://youtu.be/qM99p6QeNoY',
       github: 'https://github.com/abdullahquantumx/LOC6.0'
     },
     {
       id: 3,
       title: 'FarmHelp',
-      description: 'Description of project 1',
-      image: '/project1.jpg',
+      description: 'FarmHelp is a machine learning-powered platform designed to predict optimal crops based on user inputs, helping farmers make informed agricultural decisions. It uses TensorFlow and Keras models, served through a Flask API, and integrates with a Next.js web app for real-time, user-friendly predictions.',
+      image: './gr.png',
       tech: ['Next.js', 'Tailwind', 'Node.js', 'TensorFlow', 'Flask'],
       link: '#',
       github: 'https://github.com/abdullahquantumx/FarmHelp'
@@ -34,10 +34,10 @@ const Projects = () => {
     {
       id: 4,
       title: 'FoodCoaster-2.0',
-      description: 'Discover a unique experience crafted exclusively for NIT Rourkela! Our food delivery service is designed to bring tasty meals directly to you, right within the university campus. Enjoy the convenience of our exclusive offerings tailored for your taste buds.',
+      description: 'Experince a Food Delivery Service for NIT Rourkela which offers a seamless way to order meals directly on campus. With secure authentication, the platform provides a user-friendly experience using Express, MongoDB, and bcrypt, along with React’s useContext hook for smooth API integration and server-side rendering.',
       image: './foodcoaster.png',
       tech: ['React', 'Tailwind', 'Node.js', 'Express js', 'MongoDB'],
-      link: '#',
+      link: 'http://foodcoaster.netlify.app',
       github: 'https://github.com/abdullahquantumx/FoodCoaster-2.O-'
     }
   ];
@@ -53,9 +53,9 @@ const Projects = () => {
   };
 
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-8 ">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 inline-block">
             Featured Projects
           </h2>
@@ -72,9 +72,9 @@ const Projects = () => {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="bg-white/10 backdrop-blur-lg rounded-xl overflow-hidden border border-white/10"
             >
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col md:flex-row min-h-[450px]">
                 <motion.div 
-                  className="md:w-1/2 relative group"
+                  className="md:w-1/2 relative group min-h-[300px] md:min-h-full"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -82,13 +82,13 @@ const Projects = () => {
                   <img
                     src={projects[currentIndex].image}
                     alt={projects[currentIndex].title}
-                    className="h-64 md:h-full w-full object-cover"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </motion.div>
 
-                <div className="p-8 md:w-1/2 relative">
+                <div className="p-6 md:p-8 md:w-1/2 relative flex flex-col justify-center">
                   <motion.h3 
-                    className="text-3xl font-bold mb-4 text-white"
+                    className="text-2xl md:text-3xl font-bold mb-4 text-white"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,7 +97,7 @@ const Projects = () => {
                   </motion.h3>
 
                   <motion.p 
-                    className="text-gray-300 mb-6"
+                    className="text-gray-300 mb-6 text-base leading-relaxed"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
@@ -106,7 +106,7 @@ const Projects = () => {
                   </motion.p>
 
                   <motion.div 
-                    className="flex flex-wrap gap-2 mb-8"
+                    className="flex flex-wrap gap-2 mb-6"
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
@@ -139,7 +139,7 @@ const Projects = () => {
                     >
                       <FiGithub /> GitHub
                     </a>
-                    <a
+                    {/* <a
                       href={projects[currentIndex].link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -147,7 +147,7 @@ const Projects = () => {
                                text-white rounded-lg transition-all duration-300"
                     >
                       <FiExternalLink /> Live Demo
-                    </a>
+                    </a> */}
                   </motion.div>
                 </div>
               </div>
@@ -177,15 +177,15 @@ const Projects = () => {
           </button>
 
           {/* Project Indicators */}
-          <div className="flex justify-center mt-8 gap-2">
+          <div className="flex justify-center mt-6 gap-2">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 
+                className={`h-2 rounded-full transition-all duration-300 
                          ${currentIndex === index 
                            ? 'w-8 bg-blue-500' 
-                           : 'bg-white/20 hover:bg-white/40'}`}
+                           : 'w-2 bg-white/20 hover:bg-white/40'}`}
               />
             ))}
           </div>

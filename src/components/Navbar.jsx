@@ -1,14 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link } from 'react-scroll'; // If you want to scroll to a section, use this
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { RiMenu4Fill } from "react-icons/ri";
+
+const MenuButton = ({ isOpen, toggleMenu }) => {
+  return (
+    <div className="md:hidden flex items-center">
+      <motion.button
+        onClick={toggleMenu}
+        className="text-gray-300 hover:text-white p-2 rounded-lg focus:outline-none"
+        animate={{ rotate: isOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {isOpen ? <FiX size={24} /> : <RiMenu4Fill size={24} />}
+      </motion.button>
+    </div>
+  );
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuItems = ['home', 'tech', 'projects'];
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -17,25 +32,27 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       isScrolled ? 'bg-blue-950/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          {/* Logo */}
           <motion.div 
             className="flex-shrink-0 flex items-center"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-2xl font-bold text-gray-300">
-              Portfolio
-            </h1>
+            <Link to="home" spy={true} smooth={true} duration={500}>
+              <h1 className="text-2xl font-bold text-gray-300 cursor-pointer">
+                Portfolio
+              </h1>
+            </Link>
           </motion.div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item, index) => (
               <motion.div
@@ -61,20 +78,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-300 hover:text-white p-2 rounded-lg 
-                       transition-colors duration-300 focus:outline-none"
-            >
-              {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+            <MenuButton isOpen={isMobileMenuOpen} toggleMenu={toggleMenu} />
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -105,7 +114,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Gradient line at bottom */}
       <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-20"></div>
     </nav>
   );
