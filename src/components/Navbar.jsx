@@ -48,7 +48,7 @@ const Navbar = () => {
           >
             <Link to="home" spy={true} smooth={true} duration={500}>
               <h1 className="text-2xl font-bold text-gray-300 cursor-pointer">
-                Portfolio|ABD
+                Portfolio
               </h1>
             </Link>
           </motion.div>
